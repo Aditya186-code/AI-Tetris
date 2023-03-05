@@ -17,13 +17,15 @@ def ISMCTS(state, itermax):
         state1.reset()
         state1 = deepcopy(state)
         # print(state1.get_next_states(), " --------------- ", i)
-        while state1.get_next_states() != {} and node.GetUntriedMoves(state1.get_next_states()) == []:
+        count1 = 0
+        while count1 < 2 and node.GetUntriedMoves(state1.get_next_states()) == []:
             # print('a')
             node = node.UCBSelectedChild(state1.get_next_states().keys())
             # print('a')
             # print(node)
             reward, game_over = state1.play(node.move[0], node.move[1])
             state1._new_round()
+            count1 += 1
             last_reward = reward
 
 
@@ -44,12 +46,15 @@ def ISMCTS(state, itermax):
         # Simulation
         # print("Reached here")
         # print(random.choice(list(state1.get_next_states().keys())))
-        while state1.get_next_states() != {}:
+
+        count2 = 0
+        while count2 < 2 and state1.get_next_states() != {}:
 
             random_choice = random.choice(list(state1.get_next_states().keys()))
             # print(random_choice)
             reward, game_over = state1.play(random_choice[0], random_choice[1])
             state1._new_round()
+            count2 += 1
             last_reward = reward
 
         # Backpropagation

@@ -300,6 +300,8 @@ class Tetris:
 
         return score, self.game_over
 
+    def get_legal_moves(self):
+        return []
 
     def render(self):
         '''Renders the current board'''

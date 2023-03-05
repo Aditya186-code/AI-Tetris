@@ -15,5 +15,5 @@ while(not game_over):
     reward, game_over = env.play(best_move[0], best_move[1], render)
     # game_over = True
     env._new_round()
-    # print(best_move)
+    print(best_move)
     
