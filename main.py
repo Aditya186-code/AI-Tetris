@@ -10,7 +10,7 @@ while(not game_over):
 
 
 
-    best_move = ISMCTS(env, 500)
+    best_move = ISMCTS(env, 350)
     
     reward, game_over = env.play(best_move[0], best_move[1], render)
     # game_over = True

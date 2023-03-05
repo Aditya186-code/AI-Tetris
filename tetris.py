@@ -350,3 +350,23 @@ class Tetris:
 
         # return the resized image
         return resized
+    
+    def get_reward(self, holes_father, holes_children, height_father, height_children):
+        if (height_children < height_father):
+            if (holes_father > holes_children):
+                reward = 4
+            else:
+                reward = 3
+        elif(height_children == height_father):
+            reward = 2
+        else:
+            # print("Here")
+            if (holes_father >= holes_children):
+                reward = 1
+            # if (height_father >= height_children):
+            #     reward = -1
+            else:
+            
+                reward = -1
+        
+        return reward
